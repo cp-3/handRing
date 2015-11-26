@@ -1,0 +1,9 @@
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('1', '13411112223', '111111', '1', '2015-6-6 15:29:28', '2015-6-9 18:33:24');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('1448ede9Af5cdA4214Aac9dA766101484779', '18689208527', '4069', '0', '2015-8-5 22:28:07', '2015-8-5 22:28:07');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('205f4bb4A8d29A4f1bA91c8Acde2a567d2ee', '18689208527', '9315', '0', '2015-8-5 22:27:17', '2015-8-5 22:27:17');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('4343e619Aae56A4d20Aa032A3182f324306b', '18689208527', '2738', '0', '2015-8-5 22:28:11', '2015-8-5 22:28:11');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('5db72f8aAf0c0A4a24Aa453Ac567dafb53bd', '13411112222', '4851', '1', '2015-6-6 22:10:38', '2015-6-9 18:20:15');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('96440200Ab3bfA40d2A8a83A11ad7879060a', '13411112222', '7492', '0', '2015-8-5 22:27:08', '2015-8-5 22:27:08');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('9f061f40A3939A49aeA94bbA24bd0cb1f79f', '13411112222', '3596', '0', '2015-6-6 22:32:27', '2015-6-6 22:32:27');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('a8fafbfcAd486A4b11Ab2ccAd704861c1eea', '186892085270', '8690', '0', '2015-8-5 22:28:33', '2015-8-5 22:28:33');
+INSERT INTO `r_smn_info_tab` (`id`, `mobile`, `msgCode`, `state`, `dateCreate`, `dateUpdate`) VALUES ('f3b43f80A5688A47c3Abd03A029230f7c13f', '186892085270', '5639', '0', '2015-8-5 22:28:20', '2015-8-5 22:28:20');

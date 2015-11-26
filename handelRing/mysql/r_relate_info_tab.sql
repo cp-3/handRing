@@ -1,0 +1,2 @@
+INSERT INTO `r_relate_info_tab` (`id`, `userId`, `inviteCode`, `friendId`, `DateCreate`, `DateUpdate`) VALUES ('58708e38A5b0fA4bfdA9296A41c9a20288d8', '5c873cfcAd8e4A490eAb8eeAa52263294f4e', '7536793', '5c873cfcAd8e4A490eAb8eeAa52263294f4e', '2015-8-9 17:40:00', '2015-8-9 17:40:00');
+INSERT INTO `r_relate_info_tab` (`id`, `userId`, `inviteCode`, `friendId`, `DateCreate`, `DateUpdate`) VALUES ('dede1ba7A3e18A45bfA89daA2962d1fc80b1', '5c873cfcAd8e4A490eAb8eeAa52263294f4e', '7536794', 'fbf1f844A9064A4799Abd0aA4af5f1a7fb25', '2015-8-10 09:29:48', '2015-8-10 09:29:48');
