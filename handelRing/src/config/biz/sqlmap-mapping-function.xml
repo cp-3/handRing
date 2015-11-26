@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ring">
+	<!-- 保存记步数据 -->
+    <insert id="save-step-data" parameterClass="com.ring.front.dto.StepInfoDTO"> 
+       INSERT INTO r_step_info_tab (
+		       	id,
+		       	userId,
+		       	ex_deviceId,
+		       	recordDate,
+		       	stepNum,
+		       	datecreate,
+		       	dateupdate
+       ) VALUES(
+				#id#,
+				#userId#,
+				#exDeviceId#,
+				str_to_date(#recordDate#,'%Y-%m-%d'),
+				#stepNum#,
+				now(),
+				now()
+	  )
+	</insert>
+	
+	<!-- 根据用户ID获取记步数据 -->
+	<select id="get-step-data-by-id" parameterClass="com.ring.front.dto.StepInfoDTO" resultClass="com.ring.front.dto.StepInfoDTO">
+	    SELECT userId,ex_deviceId exDeviceId,recordDate,stepNum FROM r_step_info_tab WHERE userId = #userId#
+	</select>
+	
+	<!-- 保存闹钟数据 -->
+    <insert id="save-alarm-clock-data" parameterClass="com.ring.front.dto.AlarmClockInfoDTO"> 
+       INSERT INTO r_alarms_info_tab (
+		       	id,
+		       	userId,
+		       	alarmsTime,
+		       	takeEffectDate,
+		       	endDate,
+		       	repeatCycle,
+		       	state,
+		       	datecreate,
+		       	dateupdate
+       ) VALUES(
+				#id#,
+				#userId#,
+				#alarmsTime#,
+				str_to_date(#takeEffectDate#,'%Y-%m-%d'),
+				str_to_date(#endDate#,'%Y-%m-%d'),
+				#repeatCycle#,
+				#state#,
+				now(),
+				now()
+	  )
+	</insert>
+	
+	<!-- 保存提醒数据 -->
+    <insert id="save-remind-data" parameterClass="com.ring.front.dto.RemindInfoDTO"> 
+       INSERT INTO r_remind_info_tab (
+		       	id,
+		       	userId,
+		       	date,
+		       	startTime,
+		       	endTime,
+		       	content,
+		       	state,
+		       	datecreate,
+		       	dateupdate
+       ) VALUES(
+				#id#,
+				#userId#,
+				str_to_date(#date#,'%Y-%m-%d'),
+				#startTime#,
+				#endTime#,
+				#content#,
+				#state#,
+				now(),
+				now()
+	  )
+	</insert>
+	
+	<!-- 保存睡眠数据 -->
+    <insert id="save-sleep-data" parameterClass="com.ring.front.dto.SleepInfoDTO"> 
+       INSERT INTO r_sleep_info_tab (
+		       	id,
+		       	userId,
+		       	ex_deviceId,
+		       	sleepDate,
+		       	qsmStartTime,
+		       	qsmEndTime,
+		       	ssmStartTime,
+		       	ssmEndTime,
+		       	sleepStartTime,
+		       	sleepEndTime,
+		       	datecreate,
+		       	dateupdate
+       ) VALUES(
+				#id#,
+				#userId#,
+				#exDeviceId#,
+				str_to_date(#sleepDate#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#qsmStartTime#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#qsmEndTime#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#ssmStartTime#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#ssmEndTime#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#sleepStartTime#,'%Y-%m-%d %H:%i:%s'),
+				str_to_date(#sleepEndTime#,'%Y-%m-%d %H:%i:%s'),
+				now(),
+				now()
+	  )
+	</insert>
+	
+	<!-- 根据用户ID获取睡眠数据 -->
+	<select id="get-sleep-data-by-id" parameterClass="com.ring.front.dto.SleepInfoDTO" resultClass="com.ring.front.dto.SleepInfoDTO">
+	    SELECT userId,ex_deviceId exDeviceId,sleepDate,qsmStartTime,qsmEndTime,ssmStartTime,ssmEndTime,sleepStartTime,sleepEndTime FROM r_sleep_info_tab WHERE userId = #userId# GROUP BY sleepDate;
+	</select>
+	
+	<!-- 根据用户ID列表获取手环数据 -->
+	<select id="get-rank-list-info-by-id" parameterClass="java.util.HashMap" resultClass="com.ring.front.dto.SumStepInfoDTO"> 
+		SELECT userId,sum(stepNum) sumSteps FROM r_step_info_tab 
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="startDate"> 
+				<![CDATA[ recordDate>=#startDate# ]]>
+		    </isNotNull>
+		    <isNotNull prepend="and" property="endDate"> 
+				<![CDATA[ recordDate<=#endDate# ]]>
+		    </isNotNull>
+			<isNotNull prepend="and" property="userIdList"> 
+				userId IN
+		        <iterate property="userIdList" open="(" close=")" conjunction=",">  
+		            #userIdList[]#  
+		        </iterate>
+		    </isNotNull>
+	    </dynamic>
+	    GROUP BY userId;
+    </select>
+    
+    <!-- 根据用户ID获取关联用户id列表 -->
+	<select id="get-friendid-list-by-id" parameterClass="java.lang.String" resultClass="java.lang.String">
+	    SELECT friendId FROM r_relate_info_tab WHERE userId = #userId#;
+	</select>
+	
+	<!--   <select id="get-rank-list-info-by-id" parameterClass="java.lang.String" resultClass="com.ring.front.dto.SumStepInfoDTO">
+		   </select>
+	-->
+</sqlMap>
